@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>BlueJelly</title>
+<script type="text/javascript" src="bluejelly.js"></script>
+</head>
+<body>
+<div id="text1">Hello, BlueJelly!</div>
+<button id="button1">READ</button>
+
+<script>
+//Global
+var ble = new BlueJelly();
+
+//onLoad
+window.onload = function(){
+    ble.setUUID("UUID1", "713d0000-503e-4c75-ba94-3148f18d941e",
+    "713d0002-503e-4c75-ba94-3148f18d941e");
+}
+
+//ClickEvent
+document.getElementById("button1").addEventListener("click", function(){
+    ble.read("UUID1");
+});
+
+//onRead
+ble.onRead = function(data, uuid){
+    value = data.getInt16(0);
+    document.getElementById("text1").innerHTML = value;
+}
+</script>
+
+</body>
+</html>
