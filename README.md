@@ -31,3 +31,12 @@ https://ht-deko.com/arduino/esp-wroom-32.html
 ESP32最小構成ボード [K-ESP32T]
 
 http://www.aitendo.com/product/15562
+
+元は　HIMALAYA ESP32 Dev Board WiFi+Bluetooth CP2102 USB to Serial mit LiPo charger Anschluss？
+https://eckstein-shop.de/HIMALAYA-ESP32-Dev-Board-WiFi-Bluetooth-CP2102-USB-to-Serial-mit-LiPo-charger-Anschluss
+
+The cheapest ESP32 Development Board
+
+https://macsbug.wordpress.com/2017/03/06/the-cheapest-esp32-development-board/
+
+からの情報です
