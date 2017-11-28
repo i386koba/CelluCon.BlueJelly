@@ -19,6 +19,10 @@ RN4020でI2Cの値を読み取る
 http://masato-ka.hatenablog.com/entry/2017/10/17/084148
 
 ## ESP-WROOM-32
+ESP32(ESP-WROOM-32)でLチカ (WindowsでArduino IDE使用)
+
+https://qiita.com/rukihena/items/6a904368700eb1c7d2a3
+
 ESP-WROOM-32 に関する記事です。
 
 https://ht-deko.com/arduino/esp-wroom-32.html
