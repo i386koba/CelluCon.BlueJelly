@@ -43,3 +43,7 @@ https://macsbug.wordpress.com/2017/03/06/the-cheapest-esp32-development-board/
 
 回路図？
 http://www.shenzhen2u.com/image/catalog/Module/NodeMCU-32S/nodemcu_32s_sch.png
+
+ESP32 Dev Module を選び、ハードウェアを https://dl.espressif.com/dl/schematics/ESP32-Core-Board-V2_sch.pdf の通りに配線すると、書き込み時のモード変更とリセットを勝手にやってくれます。
+
+配線は全部必要というわけではなく、シリアルのDTS,RTS と ESP32のEN,IO0 の間だけ回路図通りならOKです。
