@@ -40,3 +40,6 @@ The cheapest ESP32 Development Board
 https://macsbug.wordpress.com/2017/03/06/the-cheapest-esp32-development-board/
 
 からの情報です
+
+回路図？
+http://www.shenzhen2u.com/image/catalog/Module/NodeMCU-32S/nodemcu_32s_sch.png
