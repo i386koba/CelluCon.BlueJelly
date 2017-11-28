@@ -27,6 +27,9 @@ ESP-WROOM-32 に関する記事です。
 
 https://ht-deko.com/arduino/esp-wroom-32.html
 
+BLE ライブラリが不正と怒られる
+
+https://ht-deko.com/arduino/esp-wroom-32.html#99
 
 ESP32最小構成ボード [K-ESP32T]
 
