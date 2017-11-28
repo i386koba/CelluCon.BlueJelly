@@ -19,7 +19,11 @@ RN4020でI2Cの値を読み取る
 http://masato-ka.hatenablog.com/entry/2017/10/17/084148
 
 ## ESP-WROOM-32
+ESP-WROOM-32 に関する記事です。
 
-IoTはぢめました ESP-WROOM-32 BluetoothでLEDチカ
+https://ht-deko.com/arduino/esp-wroom-32.html
 
-http://anoda.cocolog-nifty.com/mad/2017/04/iot-esp-wroom-3.html
+
+ESP32最小構成ボード [K-ESP32T]
+
+http://www.aitendo.com/product/15562
