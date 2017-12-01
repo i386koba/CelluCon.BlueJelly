@@ -76,7 +76,7 @@ ble.onConnectGATT = function (uuid) {
 //--------------------------------------------------
 ble.onRead = function (data, uuid){
   //フォーマットに従って値を取得
-  value = data.getInt16(0);//2Byteの場合のフォーマット
+  value = data.getInt8(0) + data.getInt8(1);
 
   //コンソールに値を表示
   console.log(value);
