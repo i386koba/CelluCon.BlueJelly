@@ -36,3 +36,7 @@ ESP32最小構成ボード [K-ESP32T]　http://www.aitendo.com/product/15562
 ESP32 Dev Module を選び、ハードウェアを https://dl.espressif.com/dl/schematics/ESP32-Core-Board-V2_sch.pdf の通りに配線すると、書き込み時のモード変更とリセットを勝手にやってくれます。
 
 配線は全部必要というわけではなく、シリアルのDTS,RTS と ESP32のEN,IO0 の間だけ回路図通りならOKです。
+
+いろいろな ESP-WROOM-32
+
+https://macsbug.wordpress.com/category/esp32/
