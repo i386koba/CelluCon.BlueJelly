@@ -1,6 +1,7 @@
 # CelluCon.BlueJelly
-携帯電話網利用の操縦装置開発のオープンソースプロジェクト　https://github.com/cellucon　を
-BLEでやろうとして、BlueJellyで実装しようとしているところ。
+携帯電話網利用の操縦装置開発のオープンソースプロジェクト　https://github.com/cellucon
+
+をBLEでやろうとして、BlueJellyで実装しようとしているところ。
 
 https://i386koba.github.io/CelluCon.BlueJelly/ からBLEセラコンWeb画面を開けるようにする予定。(まだサンプル画面)
 
