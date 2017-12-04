@@ -5,7 +5,7 @@
 
 https://i386koba.github.io/CelluCon.BlueJelly/ からBLEセラコンWeb画面を開けるようにする予定。(まだサンプル画面)
 
-現状　https://qiita.com/b56ff3e7b3ca207ae783/　の記事にある用に
+現状　https://qiita.com/b56ff3e7b3ca207ae783/ の記事にある用に
 https://i386koba.github.io/CelluCon.BlueJelly/org/read.html
 がESP32と動くだけです。
 
