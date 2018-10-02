@@ -18,6 +18,25 @@
 
    In this example rxValue is the data received (only accessible inside that function).
    And txValue is the data to be sent, in this example just a byte incremented every second.
+
+# BLE UART
+セントラル　(Web)　→　ペリフェアラル（ESP32)
+
+## ペリフェアラル（ESP32) 
+## Service (フォルダ)　
+SERVICE_UUID "6E400001-B5A3-F393-E0A9-E50E24DCCA9E" 
+
+## Characteristic（ファイル)
+CHARACTERISTIC_UUID_RX "6E400002-B5A3-F393-E0A9-E50E24DCCA9E"
+CHARACTERISTIC_UUID_TX "6E400003-B5A3-F393-E0A9-E50E24DCCA9E"
+
+Value　データそのものです。まさにこのデータをBLEでやりとりします。
+
+Property　read, write, notify のどれに対応していのかを示す属性です。
+
+http://jellyware.jp/kurage/bluejelly/ble_guide.html
+
+
 */
 #include <BLE2902.h>
 #include <BLEDevice.h>
