@@ -42,7 +42,9 @@ CHARACTERISTIC_UUID_TX "6E400003-B5A3-F393-E0A9-E50E24DCCA9E"
 ・Property　read, write, notify のどれに対応していのかを示す属性です。
 ・Descriptor　追加情報のこと
 
-
+・Read　はセントラルがペリフェラルからデータを読むコマンド
+・Write　はセントルがペリフェラルに対してデータを書き込むコマンド
+・Notify　ペリフェラル側のタイミングで継続的にセントラルへデータ送信させるコマンド
 
 */
 #include <BLE2902.h>
