@@ -1,4 +1,6 @@
 {
-    "board": "espressif:esp32:esp32",
-    "configuration": "FlashMode=qio,FlashFreq=80,FlashSize=4M,UploadSpeed=921600,DebugLevel=none"
+    "board": "esp32:esp32:esp32",
+    "configuration": "PSRAM=disabled,PartitionScheme=default,FlashMode=qio,FlashFreq=80,FlashSize=2M,UploadSpeed=921600,DebugLevel=none",
+    "sketch": "ESP32BLE\\BluetoothSerial\\BluetoothSerial.ino",
+    "port": "COM3"
 }

@@ -1,35 +1,19 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<meta charset="utf-8">
-<title>BlueJelly</title>
-<script type="text/javascript" src="https://raw.githubusercontent.com/electricbaka/bluejelly/master/src/bluejelly.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
+
 <body>
-<div id="text1">Hello, BlueJelly!</div>
-<button id="button1">READ</button>
+    <a href="read.html" target="_blank" rel="noopener noreferrer">READ</a><br>
+    <a href="notify.html" target="_blank" rel="noopener noreferrer">Notify</a><br>
+    <a href="uart.html" target="_blank" rel="noopener noreferrer">Uart</a><br>
 
-<script>
-//Global
-var ble = new BlueJelly();
-
-//onLoad
-window.onload = function(){
-    ble.setUUID("UUID1", "4fafc201-1fb5-459e-8fcc-c5c9c331914b",
-    "beb5483e-36e1-4688-b7f5-ea07361b26a8");
-}
-
-//ClickEvent
-document.getElementById("button1").addEventListener("click", function(){
-    ble.read("UUID1");
-});
-
-//onRead
-ble.onRead = function(data, uuid){
-    value = data.getInt16(0);
-    document.getElementById("text1").innerHTML = value;
-}
-</script>
 
 </body>
+
 </html>
