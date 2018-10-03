@@ -19,33 +19,6 @@
    In this example rxValue is the data received (only accessible inside that function).
    And txValue is the data to be sent, in this example just a byte incremented every second.
 
-# BLE 
-http://jellyware.jp/kurage/bluejelly/ble_guide.html
-##　GAP（Generic Access Profile）
-セントラル　(Web)　→　ペリフェアラル（ESP32)
-・Advertise ペリフェラルが「私を見つけて！」と電波を発する行為
-・Scan　セントラルが「周りにどれだけペリフェラル居るかな？」と周辺のペリフェラルを探す行為
-・Connect　セントラルが「こいつに決めた！」と特定のペリフェラルと接続する処理。ユーザーに選択させます
-・DiSconnect　接続解除。セントラルがアプリを終了する前などに実行します。DisconnectせずにScanすると見つからない場合があ
-
-#GATT（Generic Attributes汎用アトリビュート）プロファイル
-
-## ペリフェアラル（ESP32)内に 
-## Service (フォルダのようなもの)　
-SERVICE_UUID "6E400001-B5A3-F393-E0A9-E50E24DCCA9E" 
-
-## Characteristic（ファイルのようなもの)各Serviceの中に１つ以上のCharacteristicがあります
-CHARACTERISTIC_UUID_RX "6E400002-B5A3-F393-E0A9-E50E24DCCA9E"
-CHARACTERISTIC_UUID_TX "6E400003-B5A3-F393-E0A9-E50E24DCCA9E"
-ファイルの中身には
-・Value　データそのものです。まさにこのデータをBLEでやりとりします。
-・Property　read, write, notify のどれに対応していのかを示す属性です。
-・Descriptor　追加情報のこと
-
-・Read　はセントラルがペリフェラルからデータを読むコマンド
-・Write　はセントルがペリフェラルに対してデータを書き込むコマンド
-・Notify　ペリフェラル側のタイミングで継続的にセントラルへデータ送信させるコマンド
-
 */
 #include <BLE2902.h>
 #include <BLEDevice.h>
