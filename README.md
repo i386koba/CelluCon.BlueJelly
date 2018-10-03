@@ -41,15 +41,17 @@ ESP32 Dev Module を選び、ハードウェアを https://dl.espressif.com/dl/s
 
 https://macsbug.wordpress.com/category/esp32/
 
-
+## 開発視点の超簡単BLE入門
 http://jellyware.jp/kurage/bluejelly/ble_guide.html
 
--GAP（Generic Access Profile）
-    -セントラル　(Web)　→　ペリフェアラル（ESP32)
-    -Advertise ペリフェラルが「私を見つけて！」と電波を発する行為
-    -Scan　セントラルが「周りにどれだけペリフェラル居るかな？」と周辺のペリフェラルを探す行為
-    -Connect　セントラルが「こいつに決めた！」と特定のペリフェラルと接続する処理。ユーザーに選択させます
-    -DiSconnect　接続解除。セントラルがアプリを終了する前などに実行します。DisconnectせずにScanすると見つからない場合があ
+- GAP（Generic Access Profile）
+    - セントラル　(Web)　→　ペリフェアラル（ESP32)
+    - Advertise ペリフェラルが「私を見つけて！」と電波を発する行為
+    - Scan　セントラルが「周りにどれだけペリフェラル居るかな？」と周辺のペリフェラルを探す行為
+    - Connect　セントラルが「こいつに決めた！」と特定のペリフェラルと接続する処理。
+        - ユーザーに選択させます
+    - DiSconnect　接続解除。セントラルがアプリを終了する前などに実行します。
+        - DisconnectせずにScanすると見つからない場合があり。
 
 - GATT（Generic Attributes汎用アトリビュート）
     - プロファイル　ペリフェアラル（ESP32)内に 
@@ -69,12 +71,22 @@ http://jellyware.jp/kurage/bluejelly/ble_guide.html
         
 
 
-基本的には
-・セントラル（Web)からペリフェラル（ESP32)へはコマンド20バイト内の書き込み　
-（Write　で用が足ります)
-・ペリフェラル（ESP32)からセントラル（Web)へは大きなデータ（GPSとか）を渡したい
-（Read、Notify）
+### 基本的には
+- セントラル（Web)からペリフェラル（ESP32)へはコマンド20バイト内の書き込み
+    - Webからは Write
+    - ESP32 で　`void onWrite(BLECharacteristic *pCharacteristic) {rxValue = pCharacteristic->getValue();}` で受信
+- ペリフェラル（ESP32)からセントラル（Web)へは大きなデータ（GPSとか）を渡したい
+    - Webからは Read、Notify 
+    - ESP32 のReadされるデータの配置は　`pCharacteristic->setValue(&txValue, 1);`
 
+- https://github.com/nkolban/ESP32_BLE_Arduino
+- BLE2902.h
+    - Notify 終了の Descriptor（追加情報）
+    - `pCharacteristic->addDescriptor(new BLE2902());`
+
+    BLE C++ Guide
+    
+    https://github.com/nkolban/esp32-snippets/blob/master/Documentation/BLE%20C%2B%2B%20Guide.pdf
 
 
 
