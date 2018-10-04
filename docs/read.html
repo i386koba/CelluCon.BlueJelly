@@ -1,35 +1,38 @@
 <!doctype html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>BlueJelly</title>
-<script type="text/javascript" src="https://raw.githubusercontent.com/electricbaka/bluejelly/master/src/bluejelly.js"></script>
+    <meta charset="utf-8">
+    <title>BlueJelly</title>
+    <script src="bluejelly.js"></script>
 </head>
+
 <body>
-<div id="text1">Hello, BlueJelly!</div>
-<button id="button1">READ</button>
+    <div id="text1">Hello, BlueJelly!</div>
+    <button id="button1">READ</button>
 
-<script>
-//Global
-var ble = new BlueJelly();
+    <script>
+        //Global
+        var ble = new BlueJelly();
 
-//onLoad
-window.onload = function(){
-    ble.setUUID("UUID1", "4fafc201-1fb5-459e-8fcc-c5c9c331914b",
-    "beb5483e-36e1-4688-b7f5-ea07361b26a8");
-}
+        //onLoad
+        window.onload = function () {
+            ble.setUUID("UUID1", "4fafc201-1fb5-459e-8fcc-c5c9c331914b",
+                "beb5483e-36e1-4688-b7f5-ea07361b26a8");
+        }
 
-//ClickEvent
-document.getElementById("button1").addEventListener("click", function(){
-    ble.read("UUID1");
-});
+        //ClickEvent
+        document.getElementById("button1").addEventListener("click", function () {
+            ble.read("UUID1");
+        });
 
-//onRead
-ble.onRead = function(data, uuid){
-    value = data.getInt16(0);
-    document.getElementById("text1").innerHTML = value;
-}
-</script>
+        //onRead
+        ble.onRead = function (data, uuid) {
+            value = data.getInt16(0);
+            document.getElementById("text1").innerHTML = value;
+        }
+    </script>
 
 </body>
+
 </html>
