@@ -100,6 +100,23 @@ void loop() {
       delay(10); // bluetooth stack will go into congestion, if too many packets are sent
     }
   }
+  // GATT Indicate
+  //Notification と同様にデバイスからの通知に用います。
+  //基本的な動作はNotificationと同じですがIndicateでは通知したデータが受け取られたかどうかをBLEデバイス側で応答確認できます。
+  //なお Indicateと Notificationは内部的に同じ機構を用いており、通知時にどちらが使用されたか判定ができません。
+  //そのため Indicateと Notification同時に動作させないよう気をつけてください。
+  // http://bril-tech.blogspot.com/2015/05/bluetoothsmartmbed-6.html
+
+  // リモート特性表示を受信して​​いないBLEクライアント
+  // https://github.com/nkolban/esp32-snippets/issues/397
+
+  //BLEの表示/通知の問題
+  //https://github.com/espressif/esp-idf/issues/568
+  
+  //esp_ble_gatts_send_indicate BLEで一度に2つの特性
+  //https://www.esp32.com/viewtopic.php?t=5266
+
+
   // disconnecting
   if (!deviceConnected && oldDeviceConnected) {
     delay(500); // give the bluetooth stack the chance to get things ready
