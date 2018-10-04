@@ -28,65 +28,6 @@ RN4020でI2Cの値を読み取る
 
 http://masato-ka.hatenablog.com/entry/2017/10/17/084148
 
-## ESP-WROOM-32
-ESP32最小構成ボード [K-ESP32T]　http://www.aitendo.com/product/15562
-
-回路図？　http://www.shenzhen2u.com/image/catalog/Module/NodeMCU-32S/nodemcu_32s_sch.png
-
-ESP32 Dev Module を選び、ハードウェアを https://dl.espressif.com/dl/schematics/ESP32-Core-Board-V2_sch.pdf の通りに配線すると、書き込み時のモード変更とリセットを勝手にやってくれます。
-
-配線は全部必要というわけではなく、シリアルのDTS,RTS と ESP32のEN,IO0 の間だけ回路図通りならOKです。
-
-いろいろな ESP-WROOM-32
-
-https://macsbug.wordpress.com/category/esp32/
-
-## 開発視点の超簡単BLE入門
-http://jellyware.jp/kurage/bluejelly/ble_guide.html
-
-- GAP（Generic Access Profile）
-    - セントラル　(Web)　→　ペリフェアラル（ESP32)
-    - Advertise ペリフェラルが「私を見つけて！」と電波を発する行為
-    - Scan　セントラルが「周りにどれだけペリフェラル居るかな？」と周辺のペリフェラルを探す行為
-    - Connect　セントラルが「こいつに決めた！」と特定のペリフェラルと接続する処理。
-        - ユーザーに選択させます
-    - DiSconnect　接続解除。セントラルがアプリを終了する前などに実行します。
-        - DisconnectせずにScanすると見つからない場合があり。
-
-- GATT（Generic Attributes汎用アトリビュート）
-    - プロファイル　ペリフェアラル（ESP32)内に 
-        - Service (フォルダのようなもの)　
-           - SERVICE_UUID "6E400001-B5A3-F393-E0A9-E50E24DCCA9E" 
-        - Characteristic（ファイルのようなもの)
-            - 各Serviceの中に１つ以上のCharacteristicがあります
-            - CHARACTERISTIC_UUID_RX "6E400002-B5A3-F393-E0A9-E50E24DCCA9E"
-            - CHARACTERISTIC_UUID_TX "6E400003-B5A3-F393-E0A9-E50E24DCCA9E"
-        - Characteristicの中身には
-            - Value　データそのものです。まさにこのデータをBLEでやりとりします。
-            - Property　read, write, notify のどれに対応していのかを示す属性です。
-                - Read　はセントラルがペリフェラルからデータを読むコマンド
-                - Write　はセントラルがペリフェラルに対してデータを書き込むコマンド
-                - Notify　ペリフェラル側のタイミングで継続的にセントラルへデータ送信させるコマンド
-            - Descriptor　追加情報のこと
-        
-
-
-### 基本的には
-- セントラル（Web)からペリフェラル（ESP32)へはコマンド20バイト内の書き込み
-    - Webからは Write
-    - ESP32 で　`void onWrite(BLECharacteristic *pCharacteristic) {rxValue = pCharacteristic->getValue();}` で受信
-- ペリフェラル（ESP32)からセントラル（Web)へは大きなデータ（GPSとか）を渡したい
-    - Webからは Read、Notify 
-    - ESP32 のReadされるデータの配置は　`pCharacteristic->setValue(&txValue, 1);`
-
-- https://github.com/nkolban/ESP32_BLE_Arduino
-- BLE2902.h
-    - Notify 終了の Descriptor（追加情報）
-    - `pCharacteristic->addDescriptor(new BLE2902());`
-
-    BLE C++ Guide
-    
-    https://github.com/nkolban/esp32-snippets/blob/master/Documentation/BLE%20C%2B%2B%20Guide.pdf
 
 
 
