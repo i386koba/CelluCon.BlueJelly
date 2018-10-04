@@ -52,7 +52,7 @@
         let size = 0;
         ble.onRead = function (data, uuid) {
             for (let i = 0; i < 20; i++) {
-                let val = data.getInt8(i);   //フォーマットに従って値を取得
+                let val = data.getUint8(i);   //フォーマットに従って値を取得
                 str += val;
                 size++;
                 if (val === "\n") {
