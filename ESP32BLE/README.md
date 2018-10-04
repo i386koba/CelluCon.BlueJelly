@@ -43,9 +43,17 @@ http://jellyware.jp/kurage/bluejelly/ble_guide.html
 - セントラル（Web)からペリフェラル（ESP32)へはコマンド20バイト内の書き込み
     - Webからは Write
     - ESP32 で　`void onWrite(BLECharacteristic *pCharacteristic) {rxValue = pCharacteristic->getValue();}` で受信
-- ペリフェラル（ESP32)からセントラル（Web)へは大きなデータ（GPSとか）を渡したい
+- ペリフェラル（ESP32)からセントラル（Web)へは大きなデータ（シリアル通信内容とか）を渡したい
     - Webからは Read、Notify 
-    - ESP32 のReadされるデータの配置は　`pCharacteristic->setValue(&txValue, 1);`
+    - ESP32 のReadされるデータの配置は20バイト　`pCharacteristic->setValue(&txValue, 1);`
+
+### ペリフェラル（ESP32)からセントラル（Web)へ大きなデータを渡す方法
+- ESP32　シリアルデータ受信割り込み
+    - serialEvent()  http://maicommon.ciao.jp/ss/Arduino_g/intrupt/index.htm
+    - Serial.available()あれば 最大20バイトCHARACTERISTIC_UUID_TX（Notfy）にsetValue（データ受信数）
+    
+- セントラル（Web)でNotfy
+    - CHARACTERISTIC_UUID_TX（Notfy）をString連結
 
 - https://github.com/nkolban/ESP32_BLE_Arduino
 - BLE2902.h
@@ -90,13 +98,17 @@ http://jellyware.jp/kurage/bluejelly/ble_guide.html
     
     Take this into account in your designs.  
     
-    If the value of a characteristic is greater than this amount, then only the first 20 bytes of the data will be transmitted.It is likely that your own BLE server application is going to expose its own set of characteristics.  
+    If the value of a characteristic is greater than this amount, then only the first 20 bytes of the data will be transmitted.
+    
+    It is likely that your own BLE server application is going to expose its own set of characteristics.  
     
     Through a characteristic you can set and get the value as a binary piece of storage, however this may betoo low level for you.  
     
     An alternative is to utilize the features of the C++ language and model your ownspecialized characteristic as a sub class of BLECharacteristic.  
     
-    This could then encapsulate the lowerlevel value's getter and setter with your own customized version.For example, if your characteristic represented a temperature, you could create:
+    This could then encapsulate the lowerlevel value's getter and setter with your own customized version.
+    
+    For example, if your characteristic represented a temperature, you could create:
     
         class MyTemperatureCharacteristic: public BLECharacteristic {
             MyTemperature(): BleCharacteristic(BLEUUID(MYUUID)) {
