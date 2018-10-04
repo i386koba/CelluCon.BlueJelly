@@ -51,8 +51,9 @@
         let str;
         let size = 0;
         ble.onRead = function (data, uuid) {
-            console.log(data);
-            for (let i = 0; i < 20; i++) {
+            console.log(data.buffer);
+            console.log(data.byteLength);
+            for (let i = 0; i < data.byteLength; i++) {
                 let val = data.getUint8(i);   //フォーマットに従って値を取得
                 console.log("val" + val);
                 str += val;
