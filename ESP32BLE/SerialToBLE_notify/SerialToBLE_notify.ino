@@ -69,9 +69,12 @@ void setup() {
                       BLECharacteristic::PROPERTY_NOTIFY |
                       BLECharacteristic::PROPERTY_INDICATE
                     );
-
-  // https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.descriptor.gatt.client_characteristic_configuration.xml
   // Create a BLE Descriptor
+   
+  //Client Characteristic Configuration Assigned Number: 0x2902
+  // https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.descriptor.gatt.client_characteristic_configuration.xml
+ 
+ //BLE2902.h  https://github.com/pcbreflux/espressif/blob/master/esp32/app/ESP32_ble_notify/main/GreatNeilKolbanLib/BLE2902.h
   pCharacteristic->addDescriptor(new BLE2902());
 
   // Start the service
