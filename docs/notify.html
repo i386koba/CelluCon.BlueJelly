@@ -63,7 +63,7 @@
                 let val = data.getUint8(i);   //フォーマットに従って値を取得
                 //console.log("val:" + val);
                 // ArrayBuffer から文字列への変換 https://lowreal.net/2014/07/08/1
-                str += String.fromCharCode.apply(null, val);
+                str += String.fromCharCode.apply(null, [val]);
                 size++;
                 if (val === 10) { // 10 = "\n"
                     //コンソールに値を表示
